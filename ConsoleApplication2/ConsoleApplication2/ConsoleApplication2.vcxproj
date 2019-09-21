@@ -153,9 +153,6 @@
   <ItemGroup>
     <ClCompile Include="ConsoleApplication2.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\..\..\..\..\screenshotc++\cursor.ico" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

