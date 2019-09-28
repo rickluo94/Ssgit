@@ -1,7 +1,11 @@
 ﻿  ConsoleApplication2.cpp
+C:\Users\strike lo\Documents\GitHub\Ssgit\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp(1,1): warning C4005:  '_CRT_SECURE_NO_WARNINGS': 巨集重複定義
+C:\Users\strike lo\Documents\GitHub\Ssgit\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp(1,1): warning C4005: C:\Users\strike lo\Documents\GitHub\Ssgit\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp: note: 請參閱 '_CRT_SECURE_NO_WARNINGS' 之前的定義
+C:\Users\strike lo\Documents\GitHub\Ssgit\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp(26,31): warning C4390:  ';': 找到空白的控制陳述式，是正確的嗎?
+C:\Users\strike lo\Documents\GitHub\Ssgit\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp(27,31): warning C4390:  ';': 找到空白的控制陳述式，是正確的嗎?
   正在產生程式碼
-  0 of 271 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  2 of 268 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   已完成程式碼產生
   ConsoleApplication2.vcxproj -> C:\Users\strike lo\Documents\GitHub\Ssgit\ConsoleApplication2\Release\ConsoleApplication2.exe
