@@ -1,11 +1,11 @@
 ﻿  ConsoleApplication2.cpp
-C:\Users\strike lo\Documents\GitHub\Ssgit\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp(1,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': 巨集重複定義
-C:\Users\strike lo\Documents\GitHub\Ssgit\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp : message : 請參閱 '_CRT_SECURE_NO_WARNINGS' 之前的定義
-C:\Users\strike lo\Documents\GitHub\Ssgit\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp(35,31): warning C4390: ';': 找到空白的控制陳述式，是正確的嗎?
-C:\Users\strike lo\Documents\GitHub\Ssgit\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp(36,31): warning C4390: ';': 找到空白的控制陳述式，是正確的嗎?
-  正在產生程式碼
-  0 of 268 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+C:\Users\strike lo\Documents\GitHub\Ssgit\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp(1,1): warning C4005: “_CRT_SECURE_NO_WARNINGS”: 宏重定义
+C:\Users\strike lo\Documents\GitHub\Ssgit\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp : message : 参见“_CRT_SECURE_NO_WARNINGS”的前一个定义
+C:\Users\strike lo\Documents\GitHub\Ssgit\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp(29,31): warning C4390: “;”: 找到空的受控语句；这是否是有意的?
+C:\Users\strike lo\Documents\GitHub\Ssgit\ConsoleApplication2\ConsoleApplication2\ConsoleApplication2.cpp(30,31): warning C4390: “;”: 找到空的受控语句；这是否是有意的?
+  正在生成代码
+  0 of 267 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
-  已完成程式碼產生
+  已完成代码的生成
   ConsoleApplication2.vcxproj -> C:\Users\strike lo\Documents\GitHub\Ssgit\ConsoleApplication2\Release\ConsoleApplication2.exe
